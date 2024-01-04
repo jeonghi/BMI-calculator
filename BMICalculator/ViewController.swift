@@ -12,17 +12,24 @@ class ViewController: UIViewController {
   // MARK: IBOutlet
   @IBOutlet var heightTextField: UITextField!
   @IBOutlet var weightTextField: UITextField!
-
+  @IBOutlet var nickNameTextField: UITextField!
+  
   // MARK: View Life Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
     configUI() // UI설정
+    loadData()
   }
   
   // MARK: IBAction
   @IBAction func tappedCalculateRandomBMI(_ sender: UIButton){
     setRandomValues()
     calculateBMI()
+  }
+  
+  @IBAction func tappedResetButton(_ sender: UIButton) {
+    resetData()
+    loadData()
   }
   
   @IBAction func textInputDone(_ sender: UITextField) {
@@ -38,15 +45,55 @@ class ViewController: UIViewController {
   }
   
   @IBAction func inputHeightText(_ sender: UITextField){
-    
+    saveData()
   }
   
   @IBAction func inputWeightText(_ sender: UITextField){
-    
+    saveData()
+  }
+  @IBAction func inputNickNameText(_ sender: UITextField) {
+    saveData()
   }
 }
 
-// MARK: View init
+// MARK: - Storage
+extension ViewController {
+  
+  /// 유저 정보를 로컬에서 로드하고, 대응되는 UI 컴포넌트에 값 세팅
+  func loadData() {
+    guard let userInfo = UserDefaultManager.userInfo else {
+      weightTextField.text = ""
+      heightTextField.text = ""
+      nickNameTextField.text = ""
+      return
+    }
+    
+    nickNameTextField.text = userInfo.nickName
+    if let height = userInfo.height {
+      heightTextField.text = String(height)
+    }
+    if let weight = userInfo.weight {
+      weightTextField.text = String(weight)
+    }
+  }
+  
+  /// 유저 정보를 로컬에 저장
+  func saveData() {
+    var userInfo = UserInfo(
+      nickName: nickNameTextField.text,
+      height: Int(heightTextField.text ?? ""),
+      weight: Int(weightTextField.text ?? "")
+    )
+    UserDefaultManager.userInfo = userInfo
+  }
+  
+  /// 로컬에 저장된 유저 정보 리셋
+  func resetData() {
+    UserDefaultManager.userInfo = nil
+  }
+}
+
+// MARK: - View init
 extension ViewController {
   func configUI(){
     /// 전체 UI 설정
@@ -63,7 +110,7 @@ extension ViewController {
   }
 }
 
-// MARK: View Defined Action
+// MARK: - View Defined Action
 extension ViewController: BMICalculator {
   
   /// 랜덤으로 무게(40~150) , 키(120~220) 설정
@@ -97,21 +144,20 @@ extension ViewController: BMICalculator {
     let square_height = Float (height*height/10000)
     
     guard square_height > 0 else {
-      showErrorResultAlert(.soManyHighBMI)
+      showSuccessResultAlert(BMI.고도비만)
       return
     }
     
-    let bmi = Float(weight)/square_height
-    
-    showSuccessResultAlert(String(format: "%.2f", bmi))
+    let bmi = BMI(Float(weight)/square_height)
+    showSuccessResultAlert(bmi)
     
     return
   }
   
   /// 결과 창 표시
-  func showSuccessResultAlert(_ result: String){
+  func showSuccessResultAlert(_ result: BMI){
     
-    let alertController = UIAlertController(title: "BMI 계산결과는요? 득근득근 💓", message: "\(result)", preferredStyle: .alert)
+    let alertController = UIAlertController(title: "BMI 계산결과는요? 득근득근 💓", message: "\(result.rawValue)", preferredStyle: .alert)
     
     let tappedConfirmAction = UIAlertAction(title: "확인", style: .default, handler: nil)
     
@@ -130,12 +176,35 @@ extension ViewController: BMICalculator {
   }
 }
 
-// MARK: Global Defined
+// MARK: - Global Defined
+
+enum BMI: String {
+  case 저체중
+  case 정상
+  case 과체중
+  case 비만
+  case 고도비만
+  
+  init(_ bmi: Float){
+    switch bmi {
+    case ...18.5:
+      self = .저체중
+    case 18.5...23.0:
+      self = .정상
+    case 23.0..<25.0:
+      self = .과체중
+    case 25.0..<30.0:
+      self = .비만
+    default:
+      self = .고도비만
+    }
+  }
+}
 
 protocol BMICalculator {
   func setRandomValues()
   func calculateBMI()
-  func showSuccessResultAlert(_ result: String)
+  func showSuccessResultAlert(_ result: BMI)
   func showErrorResultAlert(_ error: CalculatorError)
 }
 

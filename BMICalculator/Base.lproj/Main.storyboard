@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="6vx-jG-wMl">
-                                <rect key="frame" x="10" y="69" width="217.33333333333334" height="108.66666666666669"/>
+                                <rect key="frame" x="10" y="69" width="217.33333333333334" height="122.33333333333331"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BMI Calculator" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x4f-8S-ctn">
                                         <rect key="frame" x="0.0" y="0.0" width="144" height="25.333333333333332"/>
@@ -26,19 +26,28 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="닉네임님" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8BM-C4-ubU">
-                                        <rect key="frame" x="0.0" y="47.333333333333329" width="59" height="20.333333333333329"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="닉네임을 입력하숑" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mRJ-rs-Xj0">
+                                        <rect key="frame" x="0.0" y="47.333333333333329" width="217.33333333333334" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="inputNickNameText:" destination="BYZ-38-t0r" eventType="editingChanged" id="Rxp-ij-Gwy"/>
+                                            <action selector="textInputDone:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="dx2-1F-d8L"/>
+                                        </connections>
+                                    </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="당신의 BMI 지수를알려드릴게요" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="15D-VC-PZJ">
-                                        <rect key="frame" x="0.0" y="89.666666666666657" width="217.33333333333334" height="19"/>
+                                        <rect key="frame" x="0.0" y="103.33333333333334" width="217.33333333333334" height="19"/>
                                         <fontDescription key="fontDescription" name=".AppleSDGothicNeoI-Regular" family=".Apple SD Gothic NeoI" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="mRJ-rs-Xj0" firstAttribute="leading" secondItem="6vx-jG-wMl" secondAttribute="leading" id="4IY-ug-UZ3"/>
+                                    <constraint firstAttribute="trailing" secondItem="mRJ-rs-Xj0" secondAttribute="trailing" id="5C9-ay-YiO"/>
+                                    <constraint firstItem="mRJ-rs-Xj0" firstAttribute="leading" secondItem="6vx-jG-wMl" secondAttribute="leading" id="GAc-Va-OUa"/>
+                                    <constraint firstAttribute="trailing" secondItem="mRJ-rs-Xj0" secondAttribute="trailing" id="xtg-Me-MvH"/>
+                                </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TmK-Tz-LR3">
                                 <rect key="frame" x="20" y="551.33333333333337" width="353" height="34.333333333333371"/>
@@ -79,7 +88,8 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                                         <connections>
-                                                            <action selector="textInputDone:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="WGt-hO-gKd"/>
+                                                            <action selector="inputHeightText:" destination="BYZ-38-t0r" eventType="editingChanged" id="nac-dD-OTd"/>
+                                                            <action selector="textInputDone:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="V6K-JE-3SE"/>
                                                         </connections>
                                                     </textField>
                                                 </subviews>
@@ -102,7 +112,8 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
                                                         <connections>
-                                                            <action selector="textInputDone:" destination="BYZ-38-t0r" eventType="editingDidEndOnExit" id="OHp-SL-9BD"/>
+                                                            <action selector="inputWeightText:" destination="BYZ-38-t0r" eventType="editingChanged" id="Id8-57-XqV"/>
+                                                            <action selector="textInputDone:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="WDD-47-yIi"/>
                                                         </connections>
                                                     </textField>
                                                 </subviews>
@@ -119,14 +130,28 @@
                                             <constraint firstAttribute="trailing" secondItem="nfj-Sh-rkb" secondAttribute="trailing" id="xq9-1W-yzX"/>
                                         </constraints>
                                     </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lpy-sy-jMC">
+                                        <rect key="frame" x="0.0" y="176.33333333333331" width="55.333333333333336" height="34.333333333333343"/>
+                                        <color key="tintColor" systemColor="systemIndigoColor"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="리셋" image="arrow.triangle.2.circlepath" catalog="system">
+                                            <color key="titleColor" systemColor="systemIndigoColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="tappedResetButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="un6-xg-nAS"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="nSV-x0-ujz" secondAttribute="trailing" id="7Hv-n7-jRP"/>
+                                    <constraint firstItem="Lpy-sy-jMC" firstAttribute="height" secondItem="nSV-x0-ujz" secondAttribute="height" id="E4y-d8-GCC"/>
                                     <constraint firstAttribute="bottom" secondItem="nSV-x0-ujz" secondAttribute="bottom" id="M31-H0-aiE"/>
                                     <constraint firstItem="nSV-x0-ujz" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="HWt-wC-3HP" secondAttribute="leading" constant="20" symbolic="YES" id="Xaj-Dr-36D"/>
                                     <constraint firstItem="nSV-x0-ujz" firstAttribute="top" secondItem="Rgh-XJ-4d2" secondAttribute="bottom" constant="27.666666666666657" id="bQ5-ge-OWO"/>
                                     <constraint firstItem="Rgh-XJ-4d2" firstAttribute="leading" secondItem="HWt-wC-3HP" secondAttribute="leading" id="dPt-PM-6S2"/>
+                                    <constraint firstItem="Lpy-sy-jMC" firstAttribute="leading" secondItem="HWt-wC-3HP" secondAttribute="leading" id="jT8-R1-keB"/>
+                                    <constraint firstAttribute="bottom" secondItem="Lpy-sy-jMC" secondAttribute="bottom" id="lJi-3f-Iqm"/>
                                     <constraint firstItem="Rgh-XJ-4d2" firstAttribute="top" secondItem="HWt-wC-3HP" secondAttribute="top" id="p66-9x-waa"/>
                                     <constraint firstAttribute="trailing" secondItem="Rgh-XJ-4d2" secondAttribute="trailing" id="sIU-Lo-YZ3"/>
                                 </constraints>
@@ -159,7 +184,8 @@
                     </view>
                     <connections>
                         <outlet property="heightTextField" destination="Pkb-Be-dlg" id="92i-Ka-AVX"/>
-                        <outlet property="weightTextField" destination="t3f-2g-wPU" id="oqp-9T-jVE"/>
+                        <outlet property="nickNameTextField" destination="mRJ-rs-Xj0" id="eHH-IP-Adf"/>
+                        <outlet property="weightTextField" destination="t3f-2g-wPU" id="PHJ-lM-drO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -173,9 +199,13 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrow.triangle.2.circlepath" catalog="system" width="128" height="104"/>
         <image name="image" width="147" height="229.33332824707031"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemIndigoColor">
+            <color red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemPurpleColor">
             <color red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
