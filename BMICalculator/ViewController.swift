@@ -24,6 +24,14 @@ class ViewController: UIViewController {
     calculateBMI()
   }
   
+  @IBAction func textInputDone(_ sender: UITextField) {
+    view.endEditing(true)
+  }
+  
+  @IBAction func tappedAroundView(_ sender: UITapGestureRecognizer) {
+    view.endEditing(true)
+  }
+  
   @IBAction func tappedShowResult(_ sender: UIButton){
     calculateBMI()
   }

@@ -71,7 +71,10 @@
                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pkb-Be-dlg">
                                                         <rect key="frame" x="0.0" y="30.333333333333314" width="353.66666666666669" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                                        <connections>
+                                                            <action selector="textInputDone:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="WGt-hO-gKd"/>
+                                                        </connections>
                                                     </textField>
                                                 </subviews>
                                                 <constraints>
@@ -91,7 +94,10 @@
                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="t3f-2g-wPU">
                                                         <rect key="frame" x="0.0" y="30.333333333333314" width="353.66666666666669" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                                        <connections>
+                                                            <action selector="textInputDone:" destination="BYZ-38-t0r" eventType="editingDidEndOnExit" id="OHp-SL-9BD"/>
+                                                        </connections>
                                                     </textField>
                                                 </subviews>
                                                 <constraints>
@@ -128,6 +134,7 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="HWt-wC-3HP" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.9" id="3x9-ch-gOP"/>
                             <constraint firstItem="HWt-wC-3HP" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="57X-V0-PoI"/>
@@ -140,6 +147,9 @@
                             <constraint firstItem="HWt-wC-3HP" firstAttribute="top" secondItem="vBN-UO-Qrb" secondAttribute="bottom" id="lsp-CZ-u4k"/>
                             <constraint firstItem="6vx-jG-wMl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="zcf-Ty-RZh"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="hhB-MJ-XhN" appends="YES" id="rMj-dZ-7fr"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="heightTextField" destination="Pkb-Be-dlg" id="92i-Ka-AVX"/>
@@ -147,6 +157,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="hhB-MJ-XhN">
+                    <connections>
+                        <action selector="tappedAroundView:" destination="BYZ-38-t0r" id="aHW-bc-yag"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-411" y="49"/>
         </scene>
