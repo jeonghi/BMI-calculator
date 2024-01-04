@@ -10,6 +10,9 @@
 		5B28D25B2B46F6E900A9CE88 /* UserDefaultWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B28D25A2B46F6E900A9CE88 /* UserDefaultWrapper.swift */; };
 		5B28D25F2B46F7BB00A9CE88 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B28D25E2B46F7BB00A9CE88 /* UserInfo.swift */; };
 		5B28D2622B46F80200A9CE88 /* UserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B28D2612B46F80200A9CE88 /* UserDefaultManager.swift */; };
+		5B28D2652B46FB6F00A9CE88 /* CalculatorError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B28D2642B46FB6F00A9CE88 /* CalculatorError.swift */; };
+		5B28D2682B46FBDD00A9CE88 /* BMI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B28D2672B46FBDD00A9CE88 /* BMI.swift */; };
+		5B28D26A2B46FC0500A9CE88 /* BMICalculatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B28D2692B46FC0500A9CE88 /* BMICalculatable.swift */; };
 		5B83D3532B462AE800A7908D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83D3522B462AE800A7908D /* AppDelegate.swift */; };
 		5B83D3552B462AE800A7908D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83D3542B462AE800A7908D /* SceneDelegate.swift */; };
 		5B83D3572B462AE800A7908D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83D3562B462AE800A7908D /* ViewController.swift */; };
@@ -22,6 +25,9 @@
 		5B28D25A2B46F6E900A9CE88 /* UserDefaultWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultWrapper.swift; sourceTree = "<group>"; };
 		5B28D25E2B46F7BB00A9CE88 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		5B28D2612B46F80200A9CE88 /* UserDefaultManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultManager.swift; sourceTree = "<group>"; };
+		5B28D2642B46FB6F00A9CE88 /* CalculatorError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorError.swift; sourceTree = "<group>"; };
+		5B28D2672B46FBDD00A9CE88 /* BMI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BMI.swift; sourceTree = "<group>"; };
+		5B28D2692B46FC0500A9CE88 /* BMICalculatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BMICalculatable.swift; sourceTree = "<group>"; };
 		5B83D34F2B462AE800A7908D /* BMICalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BMICalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B83D3522B462AE800A7908D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5B83D3542B462AE800A7908D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -46,7 +52,9 @@
 		5B28D25D2B46F7AC00A9CE88 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				5B28D2632B46FB5500A9CE88 /* Error */,
 				5B28D25E2B46F7BB00A9CE88 /* UserInfo.swift */,
+				5B28D2672B46FBDD00A9CE88 /* BMI.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -58,6 +66,22 @@
 				5B28D2612B46F80200A9CE88 /* UserDefaultManager.swift */,
 			);
 			path = Manager;
+			sourceTree = "<group>";
+		};
+		5B28D2632B46FB5500A9CE88 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				5B28D2642B46FB6F00A9CE88 /* CalculatorError.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
+		5B28D2662B46FB8200A9CE88 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				5B28D2692B46FC0500A9CE88 /* BMICalculatable.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 		5B83D3462B462AE800A7908D = {
@@ -79,6 +103,7 @@
 		5B83D3512B462AE800A7908D /* BMICalculator */ = {
 			isa = PBXGroup;
 			children = (
+				5B28D2662B46FB8200A9CE88 /* Protocol */,
 				5B28D2602B46F7E600A9CE88 /* Manager */,
 				5B28D25D2B46F7AC00A9CE88 /* Models */,
 				5B83D3522B462AE800A7908D /* AppDelegate.swift */,
@@ -167,8 +192,11 @@
 				5B28D25B2B46F6E900A9CE88 /* UserDefaultWrapper.swift in Sources */,
 				5B83D3572B462AE800A7908D /* ViewController.swift in Sources */,
 				5B83D3532B462AE800A7908D /* AppDelegate.swift in Sources */,
+				5B28D2682B46FBDD00A9CE88 /* BMI.swift in Sources */,
 				5B28D25F2B46F7BB00A9CE88 /* UserInfo.swift in Sources */,
+				5B28D26A2B46FC0500A9CE88 /* BMICalculatable.swift in Sources */,
 				5B83D3552B462AE800A7908D /* SceneDelegate.swift in Sources */,
+				5B28D2652B46FB6F00A9CE88 /* CalculatorError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -79,7 +79,7 @@ extension ViewController {
   
   /// 유저 정보를 로컬에 저장
   func saveData() {
-    var userInfo = UserInfo(
+    let userInfo = UserInfo(
       nickName: nickNameTextField.text,
       height: Int(heightTextField.text ?? ""),
       weight: Int(weightTextField.text ?? "")
@@ -111,7 +111,7 @@ extension ViewController {
 }
 
 // MARK: - View Defined Action
-extension ViewController: BMICalculator {
+extension ViewController: BMICalculatable {
   
   /// 랜덤으로 무게(40~150) , 키(120~220) 설정
   func setRandomValues() {
@@ -173,59 +173,5 @@ extension ViewController: BMICalculator {
     
     alertController.addAction(tappedCloseAction)
     present(alertController, animated: true)
-  }
-}
-
-// MARK: - Global Defined
-
-enum BMI: String {
-  case 저체중
-  case 정상
-  case 과체중
-  case 비만
-  case 고도비만
-  
-  init(_ bmi: Float){
-    switch bmi {
-    case ...18.5:
-      self = .저체중
-    case 18.5...23.0:
-      self = .정상
-    case 23.0..<25.0:
-      self = .과체중
-    case 25.0..<30.0:
-      self = .비만
-    default:
-      self = .고도비만
-    }
-  }
-}
-
-protocol BMICalculator {
-  func setRandomValues()
-  func calculateBMI()
-  func showSuccessResultAlert(_ result: BMI)
-  func showErrorResultAlert(_ error: CalculatorError)
-}
-
-enum CalculatorError: Error {
-  case outOfRange // 범위가 벗어났거나
-  case invalidValue // 기대값(정수)이 아니거나
-  case inSufficientTextField // 텍스트필드가 불충분하거나
-  case soManyHighBMI // 매우 높은 BMI
-}
-
-extension CalculatorError: LocalizedError {
-  public var errorDescription: String? {
-    switch self {
-    case .inSufficientTextField:
-      return "텍스트에 모든 정보를 기입해주세요"
-    case .invalidValue:
-      return "정수값을 입력해주세요"
-    case .outOfRange:
-      return "정상수치를 벗어났어요 - 무게(40~200) , 키(120~220)"
-    case .soManyHighBMI:
-      return "BMI 수치가 매우 높아서 계산할 수 없어요!"
-    }
   }
 }
