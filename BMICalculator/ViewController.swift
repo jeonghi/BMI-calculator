@@ -13,6 +13,7 @@ class ViewController: UIViewController {
   @IBOutlet var heightTextField: UITextField!
   @IBOutlet var weightTextField: UITextField!
 
+  // MARK: View Life Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
     configUI() // UI설정
@@ -43,14 +44,6 @@ class ViewController: UIViewController {
   @IBAction func inputWeightText(_ sender: UITextField){
     
   }
-  
-  /// 랜덤으로 무게(40~150) , 키(120~220) 설정
-  func setRandomValues() {
-    let weight = Int.random(in: 40...200)
-    let height = Int.random(in: 50...220)
-    weightTextField.text = String(weight)
-    heightTextField.text = String(height)
-  }
 }
 
 // MARK: View init
@@ -71,7 +64,16 @@ extension ViewController {
 }
 
 // MARK: View Defined Action
-extension ViewController {
+extension ViewController: BMICalculator {
+  
+  /// 랜덤으로 무게(40~150) , 키(120~220) 설정
+  func setRandomValues() {
+    let weight = Int.random(in: 40...200)
+    let height = Int.random(in: 50...220)
+    weightTextField.text = String(weight)
+    heightTextField.text = String(height)
+  }
+  
   /// BMI 계산 = 체중 / (신장^2)
   func calculateBMI() {
     guard let height = heightTextField.text, let weight = weightTextField.text else {
@@ -128,17 +130,23 @@ extension ViewController {
   }
 }
 
-// MARK: View Defined Error
-extension ViewController {
-  enum CalculatorError: Error {
-    case outOfRange // 범위가 벗어났거나
-    case invalidValue // 기대값(정수)이 아니거나
-    case inSufficientTextField // 텍스트필드가 불충분하거나
-    case soManyHighBMI // 매우 높은 BMI
-  }
+// MARK: Global Defined
+
+protocol BMICalculator {
+  func setRandomValues()
+  func calculateBMI()
+  func showSuccessResultAlert(_ result: String)
+  func showErrorResultAlert(_ error: CalculatorError)
 }
 
-extension ViewController.CalculatorError: LocalizedError {
+enum CalculatorError: Error {
+  case outOfRange // 범위가 벗어났거나
+  case invalidValue // 기대값(정수)이 아니거나
+  case inSufficientTextField // 텍스트필드가 불충분하거나
+  case soManyHighBMI // 매우 높은 BMI
+}
+
+extension CalculatorError: LocalizedError {
   public var errorDescription: String? {
     switch self {
     case .inSufficientTextField:

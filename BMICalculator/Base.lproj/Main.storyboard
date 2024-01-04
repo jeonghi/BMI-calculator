@@ -94,7 +94,7 @@
                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="t3f-2g-wPU">
                                                         <rect key="frame" x="0.0" y="30.333333333333314" width="353.66666666666669" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
                                                         <connections>
                                                             <action selector="textInputDone:" destination="BYZ-38-t0r" eventType="editingDidEndOnExit" id="OHp-SL-9BD"/>
                                                         </connections>
